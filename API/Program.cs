@@ -12,11 +12,13 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 });
 builder.Services.AddAuthorization();
 
+builder.Services.AddCors();
 var app = builder.Build();
 
-app.UseAuthentication(); // checks token validity
-app.UseAuthorization();  // enforces [Authorize] attributes
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
+.WithOrigins("http://localhost:4200", "https://localhost:4200"));
 // Configure the HTTP request pipeline.
+app.UseAuthorization();  // enforces [Authorize] attributes
 app.MapControllers();
 
 app.Run();

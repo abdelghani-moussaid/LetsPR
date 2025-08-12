@@ -13,13 +13,13 @@ namespace API.Controllers
     {
         private readonly AppDbContext _context = context;
 
-        [Authorize]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Race>>> GetRaces()
+        public async Task<IActionResult> Get([FromServices] AppDbContext db)
         {
-            var userId = User.FindFirst("userId")?.Value;
-            var races = await _context.Races
-                .Where(r => r.UserId.ToString() == userId)
+            var count = await db.Races.CountAsync(); // set a breakpoint or log this
+            var races = await db.Races
+                .OrderBy(r => r.Date)
+                .Select(r => new { r.Id, r.Type, r.Date, r.GoalTime, r.TrainingDays })
                 .ToListAsync();
 
             return Ok(races);
