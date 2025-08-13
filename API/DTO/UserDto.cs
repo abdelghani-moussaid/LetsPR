@@ -1,11 +1,21 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace API.DTO;
 
 public class UserDto
 {
-    public required Guid Id { get; set; }
-    public required string Name { get; set; }
-    public required string Email { get; set; }
-    public required string Token { get; set; }
+    [Required]
+    public Guid Id { get; set; }
+
+    [Required]
+    [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
+    public string Name { get; set; } = string.Empty;
+
+    [Required]
+    [EmailAddress(ErrorMessage = "Invalid email format.")]
+    public string Email { get; set; } = string.Empty;
+
+    [Required]
+    public string Token { get; set; } = string.Empty;
 }
