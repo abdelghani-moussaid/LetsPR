@@ -6,8 +6,8 @@ public class AppUser
     public required string Name { get; set; }
     public required string Email { get; set; }
 
-    public byte[] PasswordHash { get; set; } = default!;
-    public byte[] PasswordSalt { get; set; } = default!;
+    public required byte[] PasswordHash { get; set; }
+    public required byte[] PasswordSalt { get; set; }
 
     public ICollection<Race> Races { get; set; } = new List<Race>();
 }
