@@ -1,9 +1,3 @@
-<h3 class="text-3xl text-red-500 font-bold">{{title}}</h3>
+<app-nav />
 
-<ul>
-    @for (race of races(); track race.id) {
-        <li>{{race.id}} - {{race.type}}</li>
-    }
-</ul>
-
-<button class="btn btn-primary">Primary</button>
+<app-home />

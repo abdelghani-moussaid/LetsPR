@@ -1,0 +1,31 @@
+<div class="hero min-h-screen bg-gradient-to-br from-base-200 via-base-300 to-base-200">
+    @if (!registerMode()) {
+    <div class="hero-content text-center">
+        <div class="flex flex-col items-center max-w-xl">
+            <h1 class="text-9xl mb-4">
+                🥇
+            </h1>
+            <!-- Headline -->
+            <h1 class="text-5xl font-extrabold text-primary-content">
+                Train Smarter. Race Faster.
+            </h1>
+
+            <!-- Subheadline -->
+            <p class="py-6 text-lg text-base-content/80">
+                Join now and start building your best race yet.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex gap-4">
+                <button (click)="showRegister(true)" class="btn btn-primary btn-lg px-8">Register</button>
+                <button class="btn btn-outline btn-lg px-8">Learn More</button>
+            </div>
+        </div>
+    </div>
+    } @else {
+        <div class="w-full text-2xl text-center flex justify-center">
+            <app-register class="w-full" (cancelRegister)="showRegister($event)"/>
+        </div>
+    }
+
+</div>
