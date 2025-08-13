@@ -13,6 +13,9 @@
 *.userosscache
 *.sln.docstates
 
+#database
+./Data/letspr.db*
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
