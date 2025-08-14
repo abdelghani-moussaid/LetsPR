@@ -16,7 +16,7 @@ export class Nav implements OnInit {
   private router = inject(Router);
   private toast = inject(ToastService)
   protected creds: any = {};
-  protected selectedTheme = signal<string>(localStorage.getItem('theme') || 'light');
+  protected selectedTheme = signal<string>(localStorage.getItem('theme') || 'dark');
   protected themes = themes;
 
   ngOnInit(): void {

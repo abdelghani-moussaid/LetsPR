@@ -1,7 +1,7 @@
 export const themes = [
-    "light",
+    // "light",
     "dark",
-    "synthwave",
+    // "synthwave",
     // "retro",
     // "cyberpunk",
     // "valentine",
@@ -10,7 +10,7 @@ export const themes = [
     // "forest",
     // "aqua",
     // "lofi",
-    "pastel",
+    "pastel"
     // "fantasy",
     // "wireframe",
     // "black",

@@ -1,0 +1,78 @@
+<div class="max-w-3xl mx-auto p-4">
+    <a [routerLink]="['/races', raceId]" class="btn btn-ghost btn-sm mb-4">← Back</a>
+
+    <form [formGroup]="form" (ngSubmit)="save()" class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Edit Race</h2>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+                <!-- Type -->
+                <label class="form-control w-full">
+                    <div class="label"><span class="label-text">Type</span></div>
+                    <select class="select select-bordered" formControlName="type" required>
+                        <option value="">Select…</option>
+                        <option>5K</option>
+                        <option>10K</option>
+                        <option>Half</option>
+                        <option>Marathon</option>
+                    </select>
+                    @if (form.controls.type.invalid && form.controls.type.touched) {
+                    <div class="label">
+                        <span class="label-text-alt text-error">Type is required</span>
+                    </div>
+                    }
+                </label>
+
+                <!-- Date -->
+                <label class="form-control w-full">
+                    <div class="label"><span class="label-text">Date</span></div>
+                    <input type="date" class="input input-bordered" formControlName="date" required />
+                    @if (form.controls.date.invalid && form.controls.date.touched) {
+                    <div class="label">
+                        <span class="label-text-alt text-error">Date is required</span>
+                    </div>
+                    }
+                </label>
+
+                <!-- Location -->
+                <label class="form-control">
+                    <div class="label"><span class="label-text">Location</span></div>
+                    <input type="text" class="input input-bordered" formControlName="location"
+                        placeholder="City, Country" required />
+                    @if (form.controls.location.invalid && form.controls.location.touched) {
+                    <div class="label">
+                        <span class="label-text-alt text-error">Location is required</span>
+                    </div>
+                    }
+                </label>
+
+                <!-- Goal Time -->
+                <label class="form-control">
+                    <div class="label"><span class="label-text">Goal Time (HH:MM:SS)</span></div>
+                    <input type="text" class="input input-bordered" formControlName="goalTime" placeholder="01:35:00" />
+                    @if (form.controls.goalTime.invalid && form.controls.goalTime.touched) {
+                    <div class="label">
+                        <span class="label-text-alt text-error">Format must be HH:MM:SS</span>
+                    </div>
+                    }
+                </label>
+
+                <!-- Training Days -->
+                <label class="form-control">
+                    <div class="label"><span class="label-text">Training Days / week</span></div>
+                    <input type="number" min="1" max="7" class="input input-bordered" formControlName="trainingDays" />
+                    @if (form.controls.trainingDays.invalid && form.controls.trainingDays.touched) {
+                    <div class="label">
+                        <span class="label-text-alt text-error">1–7 only</span>
+                    </div>
+                    }
+                </label>
+            </div>
+
+            <div class="card-actions justify-end mt-4">
+                <button type="button" class="btn btn-ghost" [routerLink]="['/races', raceId]">Cancel</button>
+                <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

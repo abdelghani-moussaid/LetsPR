@@ -49,16 +49,34 @@
                 Train Smarter. Race Faster.
             </h1>
 
+            
+            @if (!accountService.currentUser()) {
             <!-- Subheadline -->
             <p class="py-6 text-lg text-base-content/80">
                 Join now and start building your best race yet.
             </p>
+            }
+            @if (accountService.currentUser()) {
+            <!-- Subheadline -->
+            <p class="py-6 text-lg text-base-content/80">
+                Start building your best race yet.
+            </p>
+            }
 
             <!-- CTA Buttons -->
+            @if (!accountService.currentUser()) {
             <div class="flex gap-4">
                 <button (click)="showRegister(true)" class="btn btn-primary btn-lg px-8">Register</button>
                 <button class="btn btn-outline btn-lg px-8">Learn More</button>
             </div>
+            }
+
+            @if (accountService.currentUser()) {
+            <div class="flex gap-4">
+                <a routerLink="/races"  class="btn btn-primary btn-lg px-8">My Races</a>
+                <button (click)="logout()" class="btn btn-outline btn-lg px-8">Logout</button>
+            </div>
+            }
         </div>
     </div>
     } @else {

@@ -9,6 +9,18 @@ import { Router, RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   protected router = inject(Router);
+
+  ngOnInit() {
+    const uStr = localStorage.getItem('user');
+    if (uStr) {
+      const u = JSON.parse(uStr);
+      const { exp } = JSON.parse(atob(u.token.split('.')[1]));
+      if (Date.now() >= exp * 1000) {
+        localStorage.removeItem('user');
+        this.router.navigateByUrl('/'); // or /login
+      }
+    }
+  }
 }

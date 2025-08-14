@@ -1,5 +1,16 @@
-<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  @for (race of races$ | async; track race.id) {
-    <app-race-card [race]="race"></app-race-card>
-  }
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-bold">My Races</h2>
+  <a class="btn btn-primary btn-sm" routerLink="/races/new">+ Add Race</a>
 </div>
+
+@if ((races$ | async)?.length === 0) {
+  <div class="text-center py-12">
+    <p class="text-lg mb-4">No races yet</p>
+  </div>
+} @else {
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (race of races$ | async; track race.id) {
+      <app-race-card [race]="race"></app-race-card>
+    }
+  </div>
+}

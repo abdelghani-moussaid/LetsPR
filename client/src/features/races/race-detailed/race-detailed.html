@@ -29,7 +29,7 @@
 
         <div class="card-actions justify-end mt-4">
           <button routerLink="/races/{{race.id}}/edit"  class="btn btn-outline btn-sm">Edit</button>
-          <button class="btn btn-error btn-sm">Delete</button>
+          <button (click)="onDelete(race.id)" class="btn btn-error btn-sm">Delete</button>
         </div>
       </div>
     </div>

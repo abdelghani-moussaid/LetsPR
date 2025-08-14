@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 import { Race } from '../../../types/race';
 import { AsyncPipe } from '@angular/common';
 import { RaceCard } from "../race-card/race-card";
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-race-list',
-  imports: [AsyncPipe, RaceCard],
+  imports: [AsyncPipe, RaceCard, RouterLink],
   templateUrl: './race-list.html',
   styleUrl: './race-list.css'
 })

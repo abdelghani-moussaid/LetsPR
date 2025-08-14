@@ -2,6 +2,7 @@ import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RegisterCreds } from '../../../types/user';
 import { AccountService } from '../../../core/services/account-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,13 +12,14 @@ import { AccountService } from '../../../core/services/account-service';
 })
 export class Register {
   private accountService = inject(AccountService);
+  private router = inject(Router);
   cancelRegister = output<boolean>();
   protected creds = {} as RegisterCreds;
   
   register() {
     this.accountService.register(this.creds).subscribe({
-      next: response => {
-        console.log(response);
+      next: () => {
+        this.router.navigateByUrl('/races');
         this.cancel();
       },
       error: error => console.log(error)

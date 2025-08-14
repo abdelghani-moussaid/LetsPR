@@ -45,4 +45,7 @@ app.UseAuthentication();
 app.UseAuthorization();  // enforces [Authorize] attributes
 app.MapControllers();
 
+// Add this line to serve index.html for non-API routes
+app.MapFallbackToFile("index.html");
+
 app.Run();
