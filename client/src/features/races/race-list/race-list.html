@@ -1,1 +1,5 @@
-<p>race-list works!</p>
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (race of races$ | async; track race.id) {
+    <app-race-card [race]="race"></app-race-card>
+  }
+</div>

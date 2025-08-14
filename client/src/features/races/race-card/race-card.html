@@ -1,0 +1,42 @@
+@if (race(); as race){
+<div class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition duration-300">
+    <div class="card-body">
+        <!-- Race Type & Date -->
+        <div class="flex justify-between items-center">
+            <h2 class="card-title text-primary uppercase tracking-wide">
+                {{ race.type }}
+            </h2>
+            <span class="badge badge-outline">
+                {{ race.date | date:'mediumDate' }}
+            </span>
+        </div>
+
+        <!-- Location -->
+        <p class="text-sm opacity-80">
+            📍 {{ race.location }}
+        </p>
+
+        <!-- Goal Time & Training Days -->
+        <div class="flex justify-between mt-4">
+            <div>
+                <span class="text-xs opacity-70">Goal Time</span>
+                <div class="font-semibold">
+                    {{ race.goalTime || '—' }}
+                </div>
+            </div>
+            <div>
+                <span class="text-xs opacity-70">Training Days</span>
+                <div class="font-semibold">
+                    {{ race.trainingDays }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="card-actions justify-end mt-4">
+            <button routerLink="/races/{{race.id}}" class="btn btn-sm btn-primary">View</button>
+            <button class="btn btn-sm btn-outline">Edit</button>
+        </div>
+    </div>
+</div>
+}

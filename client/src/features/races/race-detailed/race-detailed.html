@@ -1,1 +1,40 @@
-<p>race-detailed works!</p>
+<div class="max-w-3xl mx-auto p-4">
+  <a routerLink="/races" class="btn btn-ghost btn-sm mb-4">← Back</a>
+
+  @let race = (race$ | async);
+  @if (race) {
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <div class="flex items-center justify-between gap-3">
+          <h1 class="text-2xl font-semibold">
+            {{ race.location }} — {{ race.type }}
+          </h1>
+          <span class="badge badge-outline">{{ race.date | date:'fullDate' }}</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
+          <div class="stat p-0">
+            <div class="stat-title">Goal Time</div>
+            <div class="stat-value text-lg">{{ race.goalTime || '—' }}</div>
+          </div>
+          <div class="stat p-0">
+            <div class="stat-title">Training Days</div>
+            <div class="stat-value text-lg">{{ race.trainingDays }}</div>
+          </div>
+          <div class="stat p-0 col-span-2 sm:col-span-1">
+            <div class="stat-title">ID</div>
+            <div class="text-xs opacity-70 break-all">{{ race.id }}</div>
+          </div>
+        </div>
+
+        <div class="card-actions justify-end mt-4">
+          <button routerLink="/races/{{race.id}}/edit"  class="btn btn-outline btn-sm">Edit</button>
+          <button class="btn btn-error btn-sm">Delete</button>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="skeleton h-8 w-40 mb-3"></div>
+    <div class="skeleton h-48 w-full"></div>
+  }
+</div>
